@@ -17,3 +17,9 @@ function Blockchain(){
 
          return newBlock;
  }
+
+
+
+
+
+  module.exports = Blockchain // so in case you are familiar with ES5 syntax of JS then use this. //though i recommend you to learn ES6. 

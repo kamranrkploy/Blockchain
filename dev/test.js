@@ -6,12 +6,16 @@ const Blockchain = require('./blockchain');
 
 const MyCurrency = new Blockchain();
 
-console.log(MyCurrency);
+// console.log(MyCurrency);
 
 MyCurrency.createNewBlock(255 , 'vxhv8567ki9022' , 'asutnkd5454as4akaxnjsd');
 MyCurrency.createNewBlock(666 , 'hahha8985S5ZXSA' , 'AASAS89SA5Z');
 MyCurrency.createNewBlock(587 , '885647poiII' , 'OPkaisa9asjasasj');
 
-console.log(MyCurrency);
+// console.log(MyCurrency);
+
+MyCurrency.LastBlock()
+
+console.log(MyCurrency.LastBlock());
 
 

@@ -13,13 +13,23 @@ Zypher.createNewTransaction(24 , 'AmaanHAIO9856aSDA' , 'HassanKAJAO65593JAIH')
 Zypher.createNewTransaction(26 , 'AmaanHAIO9856aSDA' , 'HassanKAJAO65593JAIH')
 Zypher.createNewBlock(121 , 'SHAKLA554aAK' , 'AKDKLHAH8885aAD');
 
-console.log(Zypher.chain[1]);
-console.log(Zypher.chain[2]);
-console.log(Zypher);
+// console.log(Zypher.chain[1]);
+// console.log(Zypher.chain[2]);
+// console.log(Zypher);
 
+const nonce = 244 ;
+const previousBlockHash = 'JAJHA565656aADAada5cx28asa';
+const currentBlockData = [{
+    amount: 22 ,
+    sender : 'aAjkakAD5656fsC',
+    reciever : 'NCSCJAN8566aadac5fxks'
+},{
+    amount: 12 ,
+    sender : 'AKCAKL5535aada',
+    reciever : 'BDSU8646DABGzksaja'
+}
+];
 
-// Zypher.LastBlock()
-
-// console.log(Zypher.LastBlock());
+console.log(Zypher.hashBlock(previousBlockHash , currentBlockData ,nonce));
 
 

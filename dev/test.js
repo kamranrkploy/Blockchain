@@ -4,18 +4,22 @@ const Blockchain = require('./blockchain');
 // import Blockchain from './blockchain'for using ES6 with nodejs install esm from your terminal or else go with the ES5 syntax
 
 
-const MyCurrency = new Blockchain();
+const Zypher = new Blockchain(); //Zypher is just a name of my currency.
 
-// console.log(MyCurrency);
+Zypher.createNewBlock(11 , 'JSHADJKSA88565AS' , 'LISAKS98DAS');
+Zypher.createNewTransaction(22 , 'AmaanHAIO9856aSDA' , 'HassanKAJAO65593JAIH')
+Zypher.createNewBlock(121 , 'jsafajs8464dsa56' , 'hjksahj884dsa6a');
+Zypher.createNewTransaction(24 , 'AmaanHAIO9856aSDA' , 'HassanKAJAO65593JAIH')
+Zypher.createNewTransaction(26 , 'AmaanHAIO9856aSDA' , 'HassanKAJAO65593JAIH')
+Zypher.createNewBlock(121 , 'SHAKLA554aAK' , 'AKDKLHAH8885aAD');
 
-MyCurrency.createNewBlock(255 , 'vxhv8567ki9022' , 'asutnkd5454as4akaxnjsd');
-MyCurrency.createNewBlock(666 , 'hahha8985S5ZXSA' , 'AASAS89SA5Z');
-MyCurrency.createNewBlock(587 , '885647poiII' , 'OPkaisa9asjasasj');
+console.log(Zypher.chain[1]);
+console.log(Zypher.chain[2]);
+console.log(Zypher);
 
-// console.log(MyCurrency);
 
-MyCurrency.LastBlock()
+// Zypher.LastBlock()
 
-console.log(MyCurrency.LastBlock());
+// console.log(Zypher.LastBlock());
 
 

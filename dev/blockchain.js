@@ -48,13 +48,14 @@ Blockchain.prototype.hashBlock = function(previousBlockHash , currentBlockData ,
 Blockchain.prototype.proofOfWork = function(previousBlockHash , currentBlockData){
      let nonce = 0 ;
      let hash = this.hashBlock(previousBlockHash , currentBlockData , nonce) ;
-     while(this.substring(0 , 4) !== '0000'){
+     while(hash.substring(0,4) !== '0000'){
           nonce ++ ;
           hash = this.hashBlock(previousBlockHash , currentBlockData , nonce) ;
+          // console.log(hash);   
      }
      //this is that nonce that gave us a valid hash or required hash.
      //so our nonce is pretty much our proof of work
-     return nonce;
+     return nonce; 
 }
 
 

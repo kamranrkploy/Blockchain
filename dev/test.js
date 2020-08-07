@@ -17,7 +17,7 @@ Zypher.createNewBlock(121 , 'SHAKLA554aAK' , 'AKDKLHAH8885aAD');
 // console.log(Zypher.chain[2]);
 // console.log(Zypher);
 
-const nonce = 244 ;
+// const nonce = 244 ;
 const previousBlockHash = 'JAJHA565656aADAada5cx28asa';
 const currentBlockData = [{
     amount: 22 ,
@@ -30,6 +30,7 @@ const currentBlockData = [{
 }
 ];
 
-console.log(Zypher.hashBlock(previousBlockHash , currentBlockData ,nonce));
+// console.log(Zypher.hashBlock(previousBlockHash , currentBlockData ,nonce));
 
-
+console.log(Zypher.proofOfWork(previousBlockHash , currentBlockData));
+console.log(Zypher.hashBlock(previousBlockHash ,currentBlockData ,66937));

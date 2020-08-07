@@ -43,6 +43,35 @@ Blockchain.prototype.hashBlock = function(previousBlockHash , currentBlockData ,
 
 }
 
+// i recommend you to study about what is proof of work for your better understanding.
+
+Blockchain.prototype.proofOfWork = function(previousBlockHash , currentBlockData){
+     let nonce = 0 ;
+     let hash = this.hashBlock(previousBlockHash , currentBlockData , nonce) ;
+     while(this.substring(0 , 4) !== '0000'){
+          nonce ++ ;
+          hash = this.hashBlock(previousBlockHash , currentBlockData , nonce) ;
+     }
+     //this is that nonce that gave us a valid hash or required hash.
+     //so our nonce is pretty much our proof of work
+     return nonce;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 module.exports = Blockchain;

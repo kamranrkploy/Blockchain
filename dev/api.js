@@ -1,8 +1,24 @@
-var express = require('express')
-var app = express()
+var express = require('express');
+const port = 3010;
+var app = express();
 
-app.get('/' , function(req , res){
-    res.send('hey there')
-})
+//sends back to us our entire blockchain
+app.get('/blockchain' , function(req , res){
+    
+});
 
-app.listen(3010)
+//for creating a new transaction for our blockchain
+app.post('/transaction' , function(req , res){
+    
+});
+
+//it ll going to mine  a new block for us
+app.get('/mine' , function(req , res){
+    
+});
+
+
+
+app.listen(port , () => {
+    console.log(`listening on port: ${port}`);
+});

@@ -16,6 +16,9 @@ app.get('/blockchain' , function(req , res){
 });
 
 //for creating a new transaction for our blockchain
+//create dummy data in postman , chose post and enter localhost:3010/transaction
+//select body , raw and select the format as json
+//now place your dummy data here , in the form of json object
 app.post('/transaction' , function(req , res){
     console.log(req.body);
     res.send(`the amount of transaction is ${req.body.amount} Zypher`);

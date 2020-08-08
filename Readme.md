@@ -2,6 +2,10 @@ Requirements installations
 
 1) install node ---------> npm install node
 2) install sha256 (a node module) ---------> npm i sha256
+3) install postman application for ease of using API's
+4) install nodemon 
+5) install express library--------> npm i express --save
+6) install body parser so that you can work in the postman app without any errors------> npm i body-parser --save
 
 WHAT YOU SHOULD KNOW , BEFORE DIVING IN HERE...
 

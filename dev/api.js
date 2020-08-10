@@ -3,6 +3,10 @@ const port = 3010;
 const bodyParser = require('body-parser');
 const app = express();
 const Blockchain = require('./blockchain');
+const uuid = require('uuid/v1');
+
+const nodeAddress = uuid().split('-').join('');
+
 
 const Zypher = new Blockchain();
 
@@ -18,6 +22,8 @@ app.get('/blockchain' , function(req , res){
     res.send(Zypher);
 });
 
+
+
 //for creating a new transaction for our blockchain
 //create dummy data in postman , chose post and enter localhost:3010/transaction
 //select body , raw and select the format as json
@@ -27,10 +33,32 @@ app.post('/transaction' , function(req , res){
    res.json({ note: `The transaction will be added to block ${blockIndex}`});
 });
 
+
+
+
 //it ll going to mine  a new block for us
 app.get('/mine' , function(req , res){
-    
+   const lastBlock = Zypher.LastBlock();
+   const previousBlockHash = lastBlock['hash'];
+   const currentBlockData = {
+       transactions : Zypher.pendingTransaction ,
+       index: lastBlock['index'] + 1
+   };
+   const nonce = Zypher.proofOfWork(previousBlockHash , currentBlockData);
+   const BlockHash = Zypher.hashBlock(previousBlockHash , currentBlockData , nonce);
+   
+   Zypher.createNewTransaction(125 , "00" , nodeAddress);
+   
+   const newBlock = Zypher.createNewBlock(nonce , previousBlockHash , BlockHash);
+
+    res.json({
+        note : "new block mined successfully" ,
+        block : newBlock
+    });
 });
+
+
+
 
 
 

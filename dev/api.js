@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({extended : false}));
 
 
 
-//sends back to us our entire blockchain
+//sends back to us our entire blockchain ; go to localhost:3010/blockchain to see our blockchain
 app.get('/blockchain' , function(req , res){
     res.send(Zypher);
 });
@@ -36,7 +36,7 @@ app.post('/transaction' , function(req , res){
 
 
 
-//it ll going to mine  a new block for us
+//it ll going to mine  a new block for us : go to localhost:3010/mine for mining
 app.get('/mine' , function(req , res){
    const lastBlock = Zypher.LastBlock();
    const previousBlockHash = lastBlock['hash'];
@@ -49,11 +49,11 @@ app.get('/mine' , function(req , res){
    
    Zypher.createNewTransaction(125 , "00" , nodeAddress);
    
-   const newBlock = Zypher.createNewBlock(nonce , previousBlockHash , BlockHash);
+   const newblock = Zypher.createNewBlock(nonce , BlockHash , previousBlockHash);
 
     res.json({
         note : "new block mined successfully" ,
-        block : newBlock
+        block : newblock
     });
 });
 

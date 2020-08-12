@@ -1,8 +1,11 @@
 const sha256 = require('sha256');
+const currentNodeUrl = process.argv[3];
 
 function Blockchain(){
     this.chain = [];
     this.pendingTransaction = [];
+    this.currentNodeUrl = currentNodeUrl; // it is simply getting the value of current node url from package.json
+    this.networkNodes = [];
 
     //Genesis Block using dummy arbitrary data
      this.createNewBlock(233 , '0' , '0' );

@@ -58,7 +58,18 @@ app.get('/mine' , function(req , res){
     });
 });
 
+app.post('/register-and-broadcast-node' , function(req , res){
+     
+       const newNodeUrl = req.body.newNodeUrl;
+})
 
+app.post('/register-node' , function(req , res){
+    
+})
+
+app.post('/register-nodes-bulk' , function(req , res){
+    
+})
 
 
 

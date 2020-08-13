@@ -4,6 +4,7 @@ const app = express();
 const Blockchain = require('./blockchain');
 const uuid = require('uuid/v1');
 const port = process.argv[2];
+const rp = require('request-promise');
 
 
 const nodeAddress = uuid().split('-').join('');
@@ -61,7 +62,23 @@ app.get('/mine' , function(req , res){
 app.post('/register-and-broadcast-node' , function(req , res){
      
        const newNodeUrl = req.body.newNodeUrl;
-})
+       if(Zypher.networkNodes.indexOf(newNodeUrl) == -1) Zypher.networkNodes.push(newNodeUrl);
+
+       const regNodesPromises = [];
+       Zypher.networkNodes.forEach(networkNodeUrl => {
+           const requestOptions = {
+               uri:networkNodeUrl + '/register-node',
+               method: 'POST' ,
+               body: { newNodeUrl : newNodeUrl},
+               json:true
+           };
+           regNodesPromises.push(rp(requestOptions));
+        });
+        Promise.all(regNodesPromises)
+        .then(data => {
+
+        });
+});
 
 app.post('/register-node' , function(req , res){
     

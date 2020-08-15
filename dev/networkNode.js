@@ -76,7 +76,16 @@ app.post('/register-and-broadcast-node' , function(req , res){
         });
         Promise.all(regNodesPromises)
         .then(data => {
+            const bulkRegisterOptions = {
+                uri : newNodeUrl + '/register-nodes-bulk',
+                method : 'POST',
+                body: { allNetworkNodes: [...Zypher.networkNodes , Zypher.currentNodeUrl]},
+                json: true
+            };
+            return rp(bulkRegisterOptions);
 
+        }).then( data => {
+            res.json({note: 'New Node Registered with Network Successfully'});
         });
 });
 
@@ -87,7 +96,6 @@ app.post('/register-node' , function(req , res){
 app.post('/register-nodes-bulk' , function(req , res){
     
 })
-
 
 
 

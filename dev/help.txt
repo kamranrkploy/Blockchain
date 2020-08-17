@@ -1,0 +1,13 @@
+to test the register-node end point :
+use postman and select POST and use one of your node for ex :
+http://localhost:3001/register-node
+
+now select body and their chose raw and JSOn there
+now write the below code and send it.
+
+{
+    "newNodeUrl": "http://localhost:3006"
+}
+
+now on your browser run http://localhost:3001/blockchain 
+and you can see there that  "http://localhost:3006" is added with current node.

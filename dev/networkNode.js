@@ -90,6 +90,11 @@ app.post('/register-and-broadcast-node' , function(req , res){
 });
 
 app.post('/register-node' , function(req , res){
+    const newNodeUrl = req.body.newNodeUrl;
+    const nodeNotPresentAlready = Zypher.networkNodes.indexOf(newNodeUrl) == -1;
+    const notCurrentNode = Zypher.currentNodeUrl !== newNodeUrl;
+    if(nodeNotPresentAlready && notCurrentNode) Zypher.networkNodes.push(newNodeUrl);
+    res.json({note:'NEW NODE REGISTERED SUCCESSFULLY'});
     
 })
 

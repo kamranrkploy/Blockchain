@@ -11,3 +11,15 @@ now write the below code and send it.
 
 now on your browser run http://localhost:3001/blockchain 
 and you can see there that  "http://localhost:3006" is added with current node.
+
+now to test the bulk-gegister node do the following changes in the postman:
+use this method ---> http://localhost:3001/register-node-bulk
+use following data in the body
+{
+    "allNetworkNodes": [
+        "http://localhost:3002",
+        "http://localhost:300s"
+    ] 
+}
+
+NOTE: try youself by taking different nodes and examples and see if your blockchain is error free

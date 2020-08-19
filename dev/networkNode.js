@@ -99,8 +99,14 @@ app.post('/register-node' , function(req , res){
 })
 
 app.post('/register-nodes-bulk' , function(req , res){
-    
-})
+     const allNetworkNodes = req.body.allNetworkNodes;
+     allNetworkNodes.forEach(networkNodeUrl => {
+         const nodeNotPresentAlready = Zypher.networkNodes.indexOf(networkNodeUrl) == -1 ;
+         const notCurrentNode = Zypher.currentNodeUrl !== networkNodeUrl;
+         if(nodeNotPresentAlready && notCurrentNode) Zypher.networkNodes.push(networkNodeUrl);
+     });
+    res.json({note:'Bulk Registration done successfully'});
+});
 
 
 

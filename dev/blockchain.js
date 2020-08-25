@@ -1,5 +1,7 @@
 const sha256 = require('sha256');
 const currentNodeUrl = process.argv[3];
+const uuid = require('uuid/v1');
+
 
 function Blockchain(){
     this.chain = [];
@@ -35,12 +37,17 @@ Blockchain.prototype.createNewTransaction = function(amount , Sender , reciever)
       const newTransaction = {
            amount : amount + ' Zypher',
            Sender : Sender ,
-           reciever : reciever
+           reciever : reciever,
+           transactionId : uuid.split('-').join('')
       };
-    
-      this.pendingTransaction.push(newTransaction);
-      return this.LastBlock()['index']+1;
 
+           return newTransaction;
+
+}
+
+Blockchain.prototype.addTransactionToPendingTransactions = function(transactionObject){
+          this.pendingTransaction.push(transactionObject);
+          return this.LastBlock()['index'] + 1; // returning index of the block to which above transaction is added to
 }
 
 Blockchain.prototype.hashBlock = function(previousBlockHash , currentBlockData , nonce){

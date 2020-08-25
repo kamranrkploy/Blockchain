@@ -25,3 +25,6 @@ use following data in the body
 NOTE: try youself by taking different nodes and examples and see if your blockchain is error free
 
 for testing the entire network use register-node-bulk after your newNodeUrland send the data in postman to test the network
+
+what we are doing here :
+whenever we register a new node with one of the existing node than this new node registers itself with all the other node.

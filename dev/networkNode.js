@@ -48,7 +48,11 @@ app.post('/transaction/broadcast' , function(req , res){
             body : newTransaction ,
             json : true
         };
-        requestp
+        requestPromises.push(rp(requestOptions));
+    });
+    Promise.all(requestPromises)
+    .then(data => {
+        res.json({note : 'Transaction created and Broadcasted successfully'});
     });
 });
 

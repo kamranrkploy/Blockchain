@@ -36,7 +36,7 @@ Blockchain.prototype.LastBlock = function(){
 Blockchain.prototype.createNewTransaction = function(amount , Sender , reciever){
       const newTransaction = {
            amount : amount + ' Zypher',
-           Sender : Sender ,
+           sender : sender ,
            reciever : reciever,
            transactionId : uuid.split('-').join('')
       };

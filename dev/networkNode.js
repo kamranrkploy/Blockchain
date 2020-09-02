@@ -35,6 +35,22 @@ app.post('/transaction' , function(req , res){
    res.json({ note: `The transaction will be added to block ${blockIndex}`});
 });
 
+app.post('/transaction/broadcast' , function(req , res){
+    const newTransaction = Zypher.createNewTransaction(req.body.amount ,req.body.sender , req.body.reciever);
+    Zypher.addTransactionToPendingTransactions(newTransaction);
+
+
+    const requestPromises = [];
+    Zypher.networkNodes.forEach(networkNodeUrl => {
+        const requestOptions = {
+            uri: networkNodeUrl + '/transaction',
+            method : 'POST',
+            body : newTransaction ,
+            json : true
+        };
+        requestp
+    });
+});
 
 
 

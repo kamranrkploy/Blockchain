@@ -31,8 +31,9 @@ app.get('/blockchain' , function(req , res){
 //select body , raw and select the format as json
 //now place your dummy data here , in the form of json object
 app.post('/transaction' , function(req , res){
-   const blockIndex = Zypher.createNewTransaction(req.body.amount , req.body.sender , req.body.reciever);
-   res.json({ note: `The transaction will be added to block ${blockIndex}`});
+   const newTransaction = req.body;
+   const blockIndex = Zypher.addTransactionToPendingTransactions(newTransaction);
+   res.json({note: `Transaction will be added to block ${blockIndex}.`})
 });
 
 app.post('/transaction/broadcast' , function(req , res){

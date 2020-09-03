@@ -33,11 +33,11 @@ app.get('/blockchain' , function(req , res){
 app.post('/transaction' , function(req , res){
    const newTransaction = req.body;
    const blockIndex = Zypher.addTransactionToPendingTransactions(newTransaction);
-   res.json({note: `Transaction will be added to block ${blockIndex}.`})
+   res.json({note:`Transaction will be added to block ${blockIndex}.`});
 });
 
 app.post('/transaction/broadcast' , function(req , res){
-    const newTransaction = Zypher.createNewTransaction(req.body.amount ,req.body.sender , req.body.reciever);
+    const newTransaction = Zypher.createNewTransaction(req.body.amount ,req.body.Sender , req.body.reciever);
     Zypher.addTransactionToPendingTransactions(newTransaction);
 
 

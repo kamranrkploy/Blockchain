@@ -34,3 +34,7 @@ in postman first of all make sure that your everynode is connected to one anothe
 after that , select post and execute the above endpoint and give a dummy data.
 after that go to your browser and check every node.
 you ll see that the new transaction is in the pending transaction of every node.
+
+For testing /mine endpoint (after updation)
+simple connect each node to one another and then run /mine method on any of the node and check every node.
+you may play around with every method and see if the blockchain is synchronous.

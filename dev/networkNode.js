@@ -70,7 +70,7 @@ app.get('/mine' , function(req , res){
    const nonce = Zypher.proofOfWork(previousBlockHash , currentBlockData);
    const BlockHash = Zypher.hashBlock(previousBlockHash , currentBlockData , nonce);
    
-   Zypher.createNewTransaction(125 , "00" , nodeAddress);
+//    Zypher.createNewTransaction(125 , "00" , nodeAddress);
    
    const newblock = Zypher.createNewBlock(nonce , BlockHash , previousBlockHash);
 
@@ -85,12 +85,25 @@ app.get('/mine' , function(req , res){
        requestPromises.push(rp(requestOptions));
    });
 
-   Promise.all
-
+   Promise.all(requestPromises)
+   .then( data => {
+       const requestOptions = {
+           uri: Zypher.currentNodeUrl + '/transaction/broadcast',
+           method : 'POST',
+           body : {
+               amount: 50 ,
+               sender : "00",
+               reciever : nodeAddress
+           },
+           json:true
+       };
+       return rp(requestOptions);
+   }).then(data => {
     res.json({
-        note : "new block mined successfully" ,
+        note : "new block mined and broadcast successfully" ,
         block : newblock
     });
+   });
 });
 
 app.post('/register-and-broadcast-node' , function(req , res){

@@ -107,6 +107,24 @@ app.get('/mine' , function(req , res){
 });
 
 app.post('/receive-new-block' , function(res , res){
+    const newblock = req.body.newblock;
+    const lastBlock = Zypher.LastBlock();
+    const correctHash = lastBlock.hash === newblock.previousBlockHash;
+    const correctIndex = lastBlock['index']+1 === newblock['index'];
+
+    if(correctHash && correctIndex){
+        Zypher.chain.push(newblock);
+        Zypher.pendingTransaction = [];
+        res.json({
+            note:'new block received successfully',
+            newblock:newblock
+        });
+    }else{
+        res.json({
+            note:'new block was rejected',
+            newblock:newblock
+        });
+    }
 
 });
 

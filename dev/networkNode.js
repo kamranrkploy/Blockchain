@@ -37,7 +37,7 @@ app.post('/transaction' , function(req , res){
 });
 
 app.post('/transaction/broadcast' , function(req , res){
-    const newTransaction = Zypher.createNewTransaction(req.body.amount ,req.body.Sender , req.body.reciever);
+    const newTransaction = Zypher.createNewTransaction(req.body.amount ,req.body.Sender , req.body.receiver);
     Zypher.addTransactionToPendingTransactions(newTransaction);
 
 
@@ -77,7 +77,7 @@ app.get('/mine' , function(req , res){
    const requestPromises = [];
    Zypher.networkNodes.forEach(networkNodeUrl => {
        const requestOptions = {
-           uri: networkNodeUrl + '/recieve-new-block',
+           uri: networkNodeUrl + '/receive-new-block',
            method : 'POST',
            body:{newblock : newblock},
            json: true
@@ -93,7 +93,7 @@ app.get('/mine' , function(req , res){
            body : {
                amount: 50 ,
                sender : "00",
-               reciever : nodeAddress
+               receiver : nodeAddress
            },
            json:true
        };
@@ -105,6 +105,12 @@ app.get('/mine' , function(req , res){
     });
    });
 });
+
+app.post('/receive-new-block' , function(res , res){
+
+});
+
+
 
 app.post('/register-and-broadcast-node' , function(req , res){
      

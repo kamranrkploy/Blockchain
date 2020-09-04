@@ -37,7 +37,7 @@ Blockchain.prototype.createNewTransaction = function(amount , Sender , reciever)
       const newTransaction = {
            amount : amount + ' Zypher',
            Sender : Sender ,
-           reciever : reciever,
+           receiver : receiver,
            transactionId : uuid().split('-').join('')
       };
 
@@ -50,7 +50,9 @@ Blockchain.prototype.addTransactionToPendingTransactions = function(transactionO
           return this.LastBlock()['index'] + 1; // returning index of the block to which above transaction is added to
 }
 
-Blockchain.prototype.hashBlock = function(previousBlockHash , currentBlockData , nonce){
+Blockchain.prototype.hashBlock = function(previousBlockHash , currentBlockData , nonce)
+    {
+    
      const data_as_string = previousBlockHash + nonce.toString() + JSON.stringify(currentBlockData);
      const hash = sha256(data_as_string);
      return hash;

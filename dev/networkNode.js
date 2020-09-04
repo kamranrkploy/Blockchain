@@ -74,6 +74,19 @@ app.get('/mine' , function(req , res){
    
    const newblock = Zypher.createNewBlock(nonce , BlockHash , previousBlockHash);
 
+   const requestPromises = [];
+   Zypher.networkNodes.forEach(networkNodeUrl => {
+       const requestOptions = {
+           uri: networkNodeUrl + '/recieve-new-block',
+           method : 'POST',
+           body:{newblock : newblock},
+           json: true
+       };
+       requestPromises.push(rp(requestOptions));
+   });
+
+   Promise.all
+
     res.json({
         note : "new block mined successfully" ,
         block : newblock

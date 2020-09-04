@@ -72,14 +72,14 @@ app.get('/mine' , function(req , res){
    
 //    Zypher.createNewTransaction(125 , "00" , nodeAddress);
    
-   const newblock = Zypher.createNewBlock(nonce , BlockHash , previousBlockHash);
+   const newBlock = Zypher.createNewBlock(nonce , BlockHash , previousBlockHash);
 
    const requestPromises = [];
    Zypher.networkNodes.forEach(networkNodeUrl => {
        const requestOptions = {
            uri: networkNodeUrl + '/receive-new-block',
            method : 'POST',
-           body:{newblock : newblock},
+           body:{newBlock : newBlock},
            json: true
        };
        requestPromises.push(rp(requestOptions));
@@ -100,29 +100,29 @@ app.get('/mine' , function(req , res){
        return rp(requestOptions);
    }).then(data => {
     res.json({
-        note : "new block mined and broadcast successfully" ,
-        block : newblock
+        note : 'new block mined and broadcast successfully' ,
+        block : newBlock
     });
    });
 });
 
-app.post('/receive-new-block' , function(res , res){
-    const newblock = req.body.newblock;
+app.post('/receive-new-block' , function(req, res){
+    const newBlock = req.body.newBlock;
     const lastBlock = Zypher.LastBlock();
-    const correctHash = lastBlock.hash === newblock.previousBlockHash;
-    const correctIndex = lastBlock['index']+1 === newblock['index'];
+    const correctHash = lastBlock.hash === newBlock.previousBlockHash;
+    const correctIndex = lastBlock['index']+1 === newBlock['index'];
 
     if(correctHash && correctIndex){
-        Zypher.chain.push(newblock);
+        Zypher.chain.push(newBlock);
         Zypher.pendingTransaction = [];
         res.json({
             note:'new block received successfully',
-            newblock:newblock
+            newBlock : newBlock
         });
     }else{
         res.json({
             note:'new block was rejected',
-            newblock:newblock
+            newBlock : newBlock
         });
     }
 

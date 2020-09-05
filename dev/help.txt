@@ -38,3 +38,7 @@ you ll see that the new transaction is in the pending transaction of every node.
 For testing /mine endpoint (after updation)
 simple connect each node to one another and then run /mine method on any of the node and check every node.
 you may play around with every method and see if the blockchain is synchronous.
+
+for testing the chainIsValid method run any one node and it with data accordingly,
+now copy the data of your blockchain and put it in test.js as i have done.
+now run node test.js

@@ -14,7 +14,7 @@ function Blockchain(){
 
 }
 
- Blockchain.prototype.createNewBlock = function(nonce , hash , previousBlockHash){
+ Blockchain.prototype.createNewBlock = function(nonce , previousBlockHash , hash){
       const newBlock = {
            index : this.chain.length + 1 ,
            timeStamp : Date.now() ,
@@ -79,18 +79,24 @@ Blockchain.prototype.chainIsValid = function(blockchain){
      let validChain = true;
 
      for(var i=1 ; i< blockchain.length ; i++){
-        
-     }
-}
+          const currentBlock = blockchain[i];
+          const previousBlock = blockchain[i-1];
+          const blockHash = this.hashBlock((previousBlock['hash']) , { transaction: currentBlock['transaction']} , currentBlock['nonce']);
+          if(blockHash.substring(0,4) !== '0000') validChain = false;
+          if(currentBlock['previousBlockHash'] !== previousBlock['hash']) validChain = false;
 
+     };
 
+     const genesisBlock = blockchain[0];
+     const correctNonce = genesisBlock['nonce'] === 233 ;
+     const correctPreviousBlockHash = genesisBlock['previousBlockHash'] === '0';
+     const correctHash = genesisBlock['hash'] === '0';
+     const correctTransactions = genesisBlock['transaction'].length === 0;
+      
+     if(!correctNonce || !correctPreviousBlockHash || !correctHash || !correctTransactions) validChain = false;
 
-
-
-
-
-
-
+     return validChain;
+};
 
 
 module.exports = Blockchain;

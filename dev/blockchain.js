@@ -74,12 +74,14 @@ Blockchain.prototype.proofOfWork = function(previousBlockHash , currentBlockData
      return nonce; 
 }
 
+Blockchain.prototype.chainIsValid = function(blockchain){
+ 
+     let validChain = true;
 
-
-
-
-
-
+     for(var i=1 ; i< blockchain.length ; i++){
+        
+     }
+}
 
 
 

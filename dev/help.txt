@@ -42,3 +42,13 @@ you may play around with every method and see if the blockchain is synchronous.
 for testing the chainIsValid method run any one node and it with data accordingly,
 now copy the data of your blockchain and put it in test.js as i have done.
 now run node test.js
+
+To test the Consensus Endpoint:
+1) connect 5 nodes out of the 6 nodes and leave one node as it as.
+2) mine some blocks on all the five connected nodes , add transactions accordingly.
+3) now connect the last node with all the five other nodes 
+4) its obvious that the blocks there will be different as it was not connected before
+5) now run the /Consensus endpoint on this node and see what happens.
+6) that's it , you are done.
+7) after the sixth node also has the correct blockchain try running the /Consensus endpoint once again and see what happens.
+8) we tested our entire network successfully.

@@ -179,6 +179,13 @@ app.post('/register-nodes-bulk' , function(req , res){
     res.json({note:'Bulk Registration done successfully'});
 });
 
+app.get('/consensus' , function(req , res) {
+    
+})
+
+
+
+
 
 
 app.listen(port , function(){

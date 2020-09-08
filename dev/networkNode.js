@@ -180,11 +180,47 @@ app.post('/register-nodes-bulk' , function(req , res){
 });
 
 app.get('/consensus' , function(req , res) {
-    
-})
+    const requestPromises = [];
+    Zypher.networkNodes.forEach(networkNodeUrl => {
+        const requestOptions = {
+            uri:networkNodeUrl + '/blockchain',
+            method:'GET',
+            json:true
+        };
+            requestPromises.push(rp(requestOptions));
+    });
 
-
-
+    Promise.all(requestPromises)
+    //the data here is nothing but array of blockchain
+    .then(blockchains => {
+        const currentChainLenght = Zypher.chain.length;
+        let maxChainLength = currentChainLenght;
+        let newLongestChain = null;
+        let newPrendingTransactions = null ;
+      
+        blockchains.forEach(blockchain => {
+            if(blockchain.chain.length > maxChainLength){
+                maxChainLength = blockchain.chain.length;
+                newLongestChain = blockchain.chain;
+                newPrendingTransactions = blockchain.pendingTransaction;
+            };
+        });
+            if(!newLongestChain || (newLongestChain && !Zypher.chainIsValid(newLongestChain))){
+                res.json({
+                    note : 'current chain has not been replaced',
+                    chain : Zypher.chain
+                });
+            }
+          else(newLongestChain && Zypher.chainIsValid(newLongestChain)){
+             Zypher.chain = newLongestChain;
+             Zypher.pendingTransaction = newPrendingTransactions;
+             res.json({
+                 note:'this chain has been replaced',
+                 chain: Zypher.chain
+             });
+          }
+    });
+});
 
 
 

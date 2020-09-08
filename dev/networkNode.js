@@ -211,7 +211,8 @@ app.get('/consensus' , function(req , res) {
                     chain : Zypher.chain
                 });
             }
-          else(newLongestChain && Zypher.chainIsValid(newLongestChain)){
+        //   else if (newLongestChain && Zypher.chainIsValid(newLongestChain))
+          else{
              Zypher.chain = newLongestChain;
              Zypher.pendingTransaction = newPrendingTransactions;
              res.json({

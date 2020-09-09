@@ -224,7 +224,11 @@ app.get('/consensus' , function(req , res) {
 });
 
 app.get('/block/:blockHash' , function(req , res){
-
+   const blockHash = req.params.blockHash;
+   const correctBlock = Zypher.getBlock(blockHash);
+   res.json({
+       block:correctBlock
+   });
 });
 
 app.get('/transaction/:transactionID' , function(req , res){

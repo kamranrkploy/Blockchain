@@ -223,6 +223,17 @@ app.get('/consensus' , function(req , res) {
     });
 });
 
+app.get('/block/:blockHash' , function(req , res){
+
+});
+
+app.get('/transaction/:transactionID' , function(req , res){
+
+});
+
+app.get('/address/:adrress' , function(req , res){
+
+});
 
 
 app.listen(port , function(){

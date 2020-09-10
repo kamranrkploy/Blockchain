@@ -231,7 +231,7 @@ app.get('/block/:blockHash' , function(req , res){
    });
 });
 
-app.get('/transaction/:transactionID' , function(req , res){
+app.get('/transaction/:transactionId' , function(req , res){
      const transactionId = req.params.transactionId;
      const transactionData = Zypher.getTransaction(transactionId);
      res.json({

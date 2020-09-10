@@ -4,3 +4,11 @@ For Testing the first EndPoint i.e : /block/:blockHash follow the below steps:
 (2) now copy the hash from one of the blocks and run /block/YourHashHere.
 (3) you can see the block for the requested block if the value of hash was correct.
 (4) if the value of hash is incorrect you ll see a block with {block:null}.
+
+For Testing Second EndPoint i.e : /transaction/:transactionId follow the below steps:
+
+(1) create a blockchain with number of blocks of your wish by hitting the /blockchain and /mine end points.
+(2) create some transaction from postman on this node.
+(3) mine new block and copy the transactionId from one of the blocks.
+(4) hit the new end point i.e : /transaction/:transactionId (replace:transactionId with the real transactionId).
+(5) see the result.

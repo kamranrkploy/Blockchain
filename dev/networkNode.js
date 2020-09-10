@@ -232,7 +232,12 @@ app.get('/block/:blockHash' , function(req , res){
 });
 
 app.get('/transaction/:transactionID' , function(req , res){
-
+     const transactionId = req.params.transactionId;
+     const transactionData = Zypher.getTransaction(transactionId);
+     res.json({
+         transaction : transactionData.transaction,
+         block: transactionData.block
+     });
 });
 
 app.get('/address/:adrress' , function(req , res){

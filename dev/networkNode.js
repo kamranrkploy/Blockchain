@@ -241,7 +241,12 @@ app.get('/transaction/:transactionId' , function(req , res){
 });
 
 app.get('/address/:adrress' , function(req , res){
+    const address = req.params.address;
+    const addressData = Zypher.getAdressData(address);
 
+    res.json({
+        addressData : addressData
+    })
 });
 
 

@@ -136,8 +136,9 @@ Blockchain.prototype.getAdressData = function(address) {
 
      let balance = 0;
      addressTransactions.forEach(transaction => {
-          if(transaction.Sender === address) balance -= balance;
           if(transaction.reciever === address) balance += balance;
+          if(transaction.Sender === address) balance -= balance;
+
 
      });
      return {

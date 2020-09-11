@@ -12,3 +12,10 @@ For Testing Second EndPoint i.e : /transaction/:transactionId follow the below s
 (3) mine new block and copy the transactionId from one of the blocks.
 (4) hit the new end point i.e : /transaction/:transactionId (replace:transactionId with the real transactionId).
 (5) see the result.
+
+for testing the last endpoint i.e /address/:address do the following
+
+(1) Create a blockchain and add some transactions on to it using postman
+(2) Hit the /address/:address endpoint and place a sender or reciever address in place of :address
+(3) if the address is correct then yo can see all the transactions related to it and balance related to that address
+(4) if the address used is wrong you ll see empty array with zero balance 

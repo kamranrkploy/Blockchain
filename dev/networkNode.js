@@ -37,7 +37,7 @@ app.post('/transaction' , function(req , res){
 });
 
 app.post('/transaction/broadcast' , function(req , res){
-    const newTransaction = Zypher.createNewTransaction(req.body.amount ,req.body.Sender , req.body.receiver);
+    const newTransaction = Zypher.createNewTransaction(req.body.amount ,req.body.Sender , req.body.reciever);
     Zypher.addTransactionToPendingTransactions(newTransaction);
 
 

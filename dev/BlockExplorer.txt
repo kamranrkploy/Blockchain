@@ -19,3 +19,12 @@ for testing the last endpoint i.e /address/:address do the following
 (2) Hit the /address/:address endpoint and place a sender or reciever address in place of :address
 (3) if the address is correct then yo can see all the transactions related to it and balance related to that address
 (4) if the address used is wrong you ll see empty array with zero balance 
+
+BLOCK EXPLORER BUILD SUCCESSFULLY:
+ test it and play around.
+
+
+
+
+
+ THANK YOU...!

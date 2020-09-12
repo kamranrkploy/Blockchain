@@ -249,6 +249,9 @@ app.get('/address/:address' , function(req , res){
     });
 });
 
+app.get('/block-Explorer' , function(req , res){
+    res.sendFile('./Block-Explorer/index.html' , { root: __dirname});
+});
 
 app.listen(port , function(){
     console.log(`listening on port: ${port}`);

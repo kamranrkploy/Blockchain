@@ -93,7 +93,7 @@ app.get('/mine' , function(req , res){
            body : {
                amount: 50 ,
                Sender : "00",
-               receiver : nodeAddress
+               reciever : nodeAddress
            },
            json:true
        };

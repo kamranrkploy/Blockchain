@@ -57,7 +57,7 @@
 						</tr>
 						<tr>	
 							<td class="bold">Time Stamp</td>
-							<td>{{ block.timestamp }}</td>
+							<td>{{ block.timeStamp }}</td>
 						</tr>
 						<tr>	
 							<td class="bold">Nonce</td>
@@ -81,11 +81,11 @@
 					<tbody>
 						<tr>	
 							<td class="bold">Sender</td>
-							<td>{{ transaction.sender }}</td>
+							<td>{{ transaction.Sender }}</td>
 						</tr>
 						<tr>	
 							<td class="bold">Recipient</td>
-							<td>{{ transaction.recipient }}</td>
+							<td>{{ transaction.reciever }}</td>
 						</tr>
 						<tr>	
 							<td class="bold">Amount</td>
@@ -108,8 +108,8 @@
 					</thead>
 					<tbody>
 						<tr ng-repeat="transaction in addressData.addressTransactions">
-							<td>{{ transaction.sender }}</td>
-							<td>{{ transaction.recipient }}</td>
+							<td>{{ transaction.Sender }}</td>
+							<td>{{ transaction.reciever }}</td>
 							<td>{{ transaction.amount }}</td>
 						</tr>
 					</tbody>
